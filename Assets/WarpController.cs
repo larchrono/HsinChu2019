@@ -113,6 +113,18 @@ public class WarpController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F10)){
             PositionManager.instance.YFractor -= 0.2f;
         }
+        if(Input.GetKeyDown(KeyCode.F11)){
+            PositionManager.instance.detectThreshold += 1f;
+        }
+        if(Input.GetKeyDown(KeyCode.F12)){
+            PositionManager.instance.detectThreshold -= 1f;
+        }
+        if(Input.GetKeyDown(KeyCode.F7)){
+            PositionManager.instance.acceptRectAllowance += 100;
+        }
+        if(Input.GetKeyDown(KeyCode.F8)){
+            PositionManager.instance.acceptRectAllowance -= 100;
+        }
     }
 
     public void SaveWarpParam(){
