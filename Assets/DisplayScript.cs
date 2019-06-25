@@ -39,6 +39,14 @@ public class DisplayScript : MonoBehaviour
             SaveDisplayKey();
             SwitchDisplayMode(displayMode);
         }
+        if(Input.GetKeyDown(KeyCode.F4)){
+            displayMode = 2;
+            SaveDisplayKey();
+            SwitchDisplayMode(displayMode);
+        }
+        if(Input.GetKeyDown(KeyCode.F3)){
+            Screen.fullScreen = !Screen.fullScreen;
+        }
     }
 
     public void SwitchDisplayMode(int mode){
@@ -52,6 +60,12 @@ public class DisplayScript : MonoBehaviour
             CameraMonitor.targetDisplay = 0;
             CameraScene1.targetDisplay = 1;
             CameraScene2.targetDisplay = 2;
+        }
+        else if(mode == 2)
+        {
+            CameraMonitor.targetDisplay = 2;
+            CameraScene1.targetDisplay = 1;
+            CameraScene2.targetDisplay = 0;
         }
     }
 
