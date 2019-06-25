@@ -87,10 +87,20 @@ public class PaperWork : MonoBehaviour
 
             rigid.isKinematic = false;
 
-            //Move Area , if user in , no move
-            if(Vector3.Distance(transform.position, MouseControl.instance.MousePos) < ObjectManager.instance.MagnetRange){
-                rigid.isKinematic = true;
-                transform.localPosition = Vector3.Lerp(transform.localPosition, _savePos + new Vector3(0, 0, 2) , LerpSpeed);
+            if(MouseControl.instance.MousePos.Count > 0){
+                foreach (var m_pos in MouseControl.instance.MousePos)
+                {
+                    //Move Area , if user in , no move
+                    if(Vector3.Distance(transform.position, m_pos) < ObjectManager.instance.MagnetRange){
+                        rigid.isKinematic = true;
+                        transform.localPosition = Vector3.Lerp(transform.localPosition, _savePos + new Vector3(0, 0, 2) , LerpSpeed);
+                        break;
+                    }
+                    else
+                    {
+                        rigid.isKinematic = false;
+                    }
+                }
             }
             else
             {

@@ -129,9 +129,15 @@ public class TreeWork : MonoBehaviour
             */
             if(thisType == TreeType.Flower)
             {
-                if(Vector3.Distance(transform.position, MouseControl.instance.MousePos) < ObjectManager.instance.flowerMagnetRange && fallen == false){
-                    fallen = true;
-                    rg2d.bodyType = RigidbodyType2D.Dynamic;
+                if(fallen == false){
+                    foreach (var m_pos in MouseControl.instance.MousePos)
+                    {
+                        if(Vector3.Distance(transform.position, m_pos) < ObjectManager.instance.flowerMagnetRange){
+                            fallen = true;
+                            rg2d.bodyType = RigidbodyType2D.Dynamic;
+                            break;
+                        }
+                    }
                 }
 
                 if(fallen)

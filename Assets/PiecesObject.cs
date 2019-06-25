@@ -78,8 +78,31 @@ public class PiecesObject : MonoBehaviour
 
         if(Moving){
 
-            //Move Area , if user in , no move
-            if(Vector3.Distance(transform.position, MouseControl.instance.MousePos) > ObjectManager.instance.MagnetRange){
+            if(MouseControl.instance.MousePos.Count > 0){
+                foreach (var m_pos in MouseControl.instance.MousePos)
+                {
+                    //Move Area , if user in , no move
+                    if(Vector3.Distance(transform.position, m_pos) > ObjectManager.instance.MagnetRange){
+                        Vector3 goal = new Vector3(_savePos.x + Mathf.Sin(elapsedTimeMove * _randomSpeed3 + _randomSpeed ) * Mathf.Cos(elapsedTimeMove * _randomSpeed ) * _randomRadius + 
+                                                                Mathf.Cos(elapsedTimeMove * _randomSpeed2 )*_randomRadius2 + 
+                                                                Mathf.Cos(elapsedTimeMove * _randomSpeed3 )*_randomRadius3,
+
+                                                    _savePos.y + Mathf.Cos(elapsedTimeMove * _randomSpeed3 + _randomSpeed ) * Mathf.Sin(elapsedTimeMove * _randomSpeed ) * _randomRadius + 
+                                                                Mathf.Sin(elapsedTimeMove * _randomSpeed2 )*_randomRadius2 + 
+                                                                Mathf.Sin(elapsedTimeMove * _randomSpeed3 )*_randomRadius3,
+                                                    0);
+
+                        transform.localPosition = Vector3.Lerp(transform.localPosition, goal, LerpSpeed);
+                    }
+                    else
+                    {
+                        transform.position = Vector3.Lerp(transform.position, m_pos, LerpSpeed);
+                        break;
+                    }
+                }
+            }
+            else
+            {
                 Vector3 goal = new Vector3(_savePos.x + Mathf.Sin(elapsedTimeMove * _randomSpeed3 + _randomSpeed ) * Mathf.Cos(elapsedTimeMove * _randomSpeed ) * _randomRadius + 
                                                         Mathf.Cos(elapsedTimeMove * _randomSpeed2 )*_randomRadius2 + 
                                                         Mathf.Cos(elapsedTimeMove * _randomSpeed3 )*_randomRadius3,
@@ -91,10 +114,7 @@ public class PiecesObject : MonoBehaviour
 
                 transform.localPosition = Vector3.Lerp(transform.localPosition, goal, LerpSpeed);
             }
-            else
-            {
-                transform.position = Vector3.Lerp(transform.position, MouseControl.instance.MousePos, LerpSpeed);
-            }
+            
 
             //Rotate Area
             float f = 360 * _randomRotate  * Mathf.Cos(elapsedTimeRotate * _randomRotate + _randomRotate * 360 );

@@ -41,6 +41,8 @@ public class WarpController : MonoBehaviour
         rt2.rotation = Quaternion.Euler(_rot_x, 0, 0);
         rt2.localScale = new Vector3(_s_x, _s_y, 1);
 
+        PositionManager.instance.sceneWidth = PlayerPrefs.GetFloat("sceneMap_x", 10);
+
         targetRt = rt1;
     }
 
@@ -97,6 +99,14 @@ public class WarpController : MonoBehaviour
             ResetWarp();
             SaveWarpParam();
         }
+        if(Input.GetKeyDown(KeyCode.Home)){
+            PositionManager.instance.sceneWidth += 0.5f;
+            SaveWarpParam();
+        }
+        if(Input.GetKeyDown(KeyCode.End)){
+            PositionManager.instance.sceneWidth -= 0.5f;
+            SaveWarpParam();
+        }
     }
 
     public void SaveWarpParam(){
@@ -111,6 +121,8 @@ public class WarpController : MonoBehaviour
         PlayerPrefs.SetFloat("r2_rot_x", rt2.rotation.eulerAngles.x);
         PlayerPrefs.SetFloat("r2_scale_x", rt2.localScale.x);
         PlayerPrefs.SetFloat("r2_scale_y", rt2.localScale.y);
+
+        PlayerPrefs.SetFloat("sceneMap_x", PositionManager.instance.sceneWidth);
     }
 
     public void ResetWarp(){
