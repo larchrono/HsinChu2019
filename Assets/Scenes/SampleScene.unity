@@ -26858,14 +26858,19 @@ PlayableDirector:
   m_GameObject: {fileID: 560623714}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 0}
+  m_PlayableAsset: {fileID: 11400000, guid: 31908eb4b21dc584cbe618e3bd60fe3b, type: 2}
   m_InitialState: 1
   m_WrapMode: 1
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
-  m_SceneBindings: []
+  m_SceneBindings:
+  - key: {fileID: 114452476864021378, guid: 31908eb4b21dc584cbe618e3bd60fe3b, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 114736580085595478, guid: 31908eb4b21dc584cbe618e3bd60fe3b, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
-    m_References: []
+    m_References:
+    - d0b2df84d6d29c8489288ce988a1f3f4: {fileID: 0}
 --- !u!1 &566419885
 GameObject:
   m_ObjectHideFlags: 0
@@ -48834,7 +48839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1080269495
 AudioSource:
   m_ObjectHideFlags: 0
