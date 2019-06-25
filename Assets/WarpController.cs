@@ -42,6 +42,13 @@ public class WarpController : MonoBehaviour
         rt2.localScale = new Vector3(_s_x, _s_y, 1);
 
         PositionManager.instance.sceneWidth = PlayerPrefs.GetFloat("sceneMap_x", 10);
+        PositionManager.instance.acceptRectAllowance = PlayerPrefs.GetInt("RectAllowance", 700);
+        PositionManager.instance.detectThreshold = PlayerPrefs.GetFloat("detectThreshold", 25);
+        PositionManager.instance.YFractor = PlayerPrefs.GetFloat("YFractor", 2);
+
+        PlayerPrefs.SetInt("RectAllowance",PositionManager.instance.acceptRectAllowance);
+        PlayerPrefs.SetFloat("detectThreshold",PositionManager.instance.detectThreshold);
+        PlayerPrefs.SetFloat("YFractor",PositionManager.instance.YFractor);
 
         targetRt = rt1;
     }
@@ -109,21 +116,27 @@ public class WarpController : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.F9)){
             PositionManager.instance.YFractor += 0.2f;
+            SaveWarpParam();
         }
         if(Input.GetKeyDown(KeyCode.F10)){
             PositionManager.instance.YFractor -= 0.2f;
+            SaveWarpParam();
         }
         if(Input.GetKeyDown(KeyCode.F11)){
             PositionManager.instance.detectThreshold += 1f;
+            SaveWarpParam();
         }
         if(Input.GetKeyDown(KeyCode.F12)){
             PositionManager.instance.detectThreshold -= 1f;
+            SaveWarpParam();
         }
         if(Input.GetKeyDown(KeyCode.F7)){
             PositionManager.instance.acceptRectAllowance += 100;
+            SaveWarpParam();
         }
         if(Input.GetKeyDown(KeyCode.F8)){
             PositionManager.instance.acceptRectAllowance -= 100;
+            SaveWarpParam();
         }
     }
 
@@ -141,6 +154,10 @@ public class WarpController : MonoBehaviour
         PlayerPrefs.SetFloat("r2_scale_y", rt2.localScale.y);
 
         PlayerPrefs.SetFloat("sceneMap_x", PositionManager.instance.sceneWidth);
+
+        PlayerPrefs.SetInt("RectAllowance",PositionManager.instance.acceptRectAllowance);
+        PlayerPrefs.SetFloat("detectThreshold",PositionManager.instance.detectThreshold);
+        PlayerPrefs.SetFloat("YFractor",PositionManager.instance.YFractor);
     }
 
     public void ResetWarp(){
