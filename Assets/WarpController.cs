@@ -107,6 +107,12 @@ public class WarpController : MonoBehaviour
             PositionManager.instance.sceneWidth -= 0.5f;
             SaveWarpParam();
         }
+        if(Input.GetKeyDown(KeyCode.F9)){
+            PositionManager.instance.YFractor += 0.2f;
+        }
+        if(Input.GetKeyDown(KeyCode.F10)){
+            PositionManager.instance.YFractor -= 0.2f;
+        }
     }
 
     public void SaveWarpParam(){
