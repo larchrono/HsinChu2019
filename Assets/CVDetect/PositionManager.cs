@@ -19,9 +19,11 @@ public class PositionManager : MonoBehaviour
     [Header("攝影機設定 (翻轉)")]
     public bool flipY = false;
 
-    [Header("場景長寬 (Unity 單位), 輸出轉換用")]
+    [Header("場景長寬 (Unity 單位), 輸出轉換用 , 濾掉不要的部分高")]
     public float sceneWidth = 10;
     public float sceneHeight = 5;
+    public int noUseHeight = 20;
+    public float YFractor = 2;
 
     [Header("偵測靈敏度, 數值越小越靈敏")]
     [Range(1, 255)]
@@ -239,7 +241,7 @@ public class PositionManager : MonoBehaviour
             float _x = (rawPoint.x / webcam.width) * (sceneWidth * 2) - sceneWidth;
             float _y = -((rawPoint.y / webcam.height) * (sceneHeight * 2) - sceneHeight);
 
-            DetectResult.Add(new Vector3(_x, _y, 0));
+            DetectResult.Add(new Vector3(_x, _y - YFractor, 0));
         }
 
         //drawAndShowContours(imgThresh.Size(), currentFrameBlobs, "imgCurrentFrameBlobs");
@@ -269,6 +271,13 @@ public class PositionManager : MonoBehaviour
         imgNext = Mat.FromImageData(texComing.EncodeToPNG());
         if(flipY)
             Cv2.Flip(imgNext, imgNext, FlipMode.Y);  //攝影機翻轉,依展場需求
+        
+        //移除部分不想使用區塊
+        //for(int row = 0; row < noUseHeight ; row++){
+        //    for(int col = 0; col < webcam.width ; col++){
+                //imgNext.At<>
+        //    }
+        //}
         frameCount++;
     }
     public void DrawBlobInfoOnMat(List<Blob> blobs, Mat imgFrame2Copy){

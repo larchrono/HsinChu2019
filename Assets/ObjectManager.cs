@@ -232,6 +232,10 @@ public class ObjectManager : MonoBehaviour
             return;
         }
 
+        if(MouseControl.instance.MousePos.Count <= 1){
+            return;
+        }
+
         //Handle for Direction
         for(int i=0; i< runtimeRobotNum ; i++){
 

@@ -60,7 +60,8 @@ public class MouseControl : MonoBehaviour
             //如果該時間內Queue的數量過少，表示沒有人在動，因此Dequeue所有 Queue
             if(queueNumberInTime < DequeueTheshold){
                 for(int i=0 ; i < maxPointStay ; i++){
-                    MousePos.Dequeue();
+                    if(MousePos != null && MousePos.Count > 0)
+                        MousePos.Dequeue();
                 }
             }
             queueNumberInTime = 0;
