@@ -26898,6 +26898,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 114736580085595478, guid: 31908eb4b21dc584cbe618e3bd60fe3b, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 114510736158958264, guid: 31908eb4b21dc584cbe618e3bd60fe3b, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - d0b2df84d6d29c8489288ce988a1f3f4: {fileID: 0}
@@ -34295,6 +34297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneCamera: {fileID: 739555642}
   maxPointStay: 25
+  DequeueTheshold: 3
   NowQueueNumber: 0
 --- !u!114 &739555645
 MonoBehaviour:
@@ -85227,7 +85230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rawImage1: {fileID: 497610772}
   rawImage2: {fileID: 889490558}
-  moveFactor: 0.25
+  moveFactor: 0.5
   scaleFactor: 0.002
 --- !u!1 &1817272535
 GameObject:
