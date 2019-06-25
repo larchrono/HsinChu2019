@@ -19,6 +19,8 @@ public class MouseControl : MonoBehaviour
     public int NowQueueNumber = 0;
 
     
+    float dequeuePeriodSpecial = 0.7f;
+    float dequeuePeriodNormal = 5f;
     float dequeuePeriod = 5f;       //每次Dequeue 間隔
     int queueNumberInTime = 0;      //此次 Queue 數量
     float remainTime = 0;           //程式用，距離下次Queue時間
@@ -27,6 +29,8 @@ public class MouseControl : MonoBehaviour
         instance = this;
         remainTime = dequeuePeriod;
         queueNumberInTime = 0;
+
+        dequeuePeriodNormal = dequeuePeriod;
     }
 
     // Update is called once per frame
@@ -38,6 +42,14 @@ public class MouseControl : MonoBehaviour
         //MousePos = SceneCamera.ScreenToWorldPoint(screenPoint);
 
         NowQueueNumber = MousePos.Count;
+
+        if(ObjectManager.instance.workingArtwork == 4 || ObjectManager.instance.workingArtwork == 5 || ObjectManager.instance.workingArtwork == 6){
+                dequeuePeriod = dequeuePeriodSpecial;
+            }
+        else 
+        {
+            dequeuePeriod = dequeuePeriodNormal;
+        }
 
         //Use Queue to save point for detect use
         foreach (var item in PositionManager.instance.DetectResult)
@@ -58,6 +70,7 @@ public class MouseControl : MonoBehaviour
             queueNumberInTime = Mathf.Min(queueNumberInTime, maxPointStay);
 
             //如果該時間內Queue的數量過少，表示沒有人在動，因此Dequeue所有 Queue
+            
             if(queueNumberInTime < DequeueTheshold){
                 for(int i=0 ; i < maxPointStay ; i++){
                     if(MousePos != null && MousePos.Count > 0)

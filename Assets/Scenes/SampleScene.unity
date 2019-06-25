@@ -24106,7 +24106,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 311
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 34c8427e6a26c2e46b61af8249caff9c, type: 2}
   m_TargetDisplay: 0
@@ -34213,7 +34213,7 @@ GameObject:
   - component: {fileID: 739555644}
   - component: {fileID: 739555645}
   m_Layer: 0
-  m_Name: CameraMouse
+  m_Name: CameraMouse_Monitor
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34257,7 +34257,7 @@ Camera:
   m_Depth: -20
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -44465,9 +44465,11 @@ MonoBehaviour:
   flipY: 0
   sceneWidth: 10
   sceneHeight: 5
-  detectThreshold: 30
+  noUseHeight: 20
+  YFractor: 2
+  detectThreshold: 20
   acceptRect: 1500
-  acceptRectAllowance: 1000
+  acceptRectAllowance: 1200
   acceptRatio: 1
   acceptRatioAllowance: 0.7
   DetectResult: []
@@ -57673,7 +57675,7 @@ MonoBehaviour:
   routerNum: 10
   robotRadius: 2
   fadeOutTime: 15
-  TriangleCreateCD: 0.7
+  TriangleCreateCD: 0.25
   workingArtwork: 5
   transparentArt:
   - 0
@@ -72071,6 +72073,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd20dc3ea7f6f154585de093bbc2a2fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayMode: 0
+  CameraMonitor: {fileID: 739555642}
+  CameraScene1: {fileID: 982410224}
+  CameraScene2: {fileID: 972917019}
 --- !u!4 &1542407584
 Transform:
   m_ObjectHideFlags: 0
@@ -93071,8 +93077,8 @@ GameObject:
   - component: {fileID: 1973720046}
   - component: {fileID: 1973720045}
   - component: {fileID: 1973720044}
-  m_Layer: 0
-  m_Name: PrevuewMesh
+  m_Layer: 9
+  m_Name: PreviewWebcamMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93144,13 +93150,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973720043}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -40, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5}
+  m_LocalScale: {x: 1.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!1 &1976345387
 GameObject:
   m_ObjectHideFlags: 0

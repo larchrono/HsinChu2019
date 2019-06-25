@@ -237,7 +237,7 @@ public class ObjectManager : MonoBehaviour
         }
 
         //Handle for Direction
-        for(int i=0; i< runtimeRobotNum ; i++){
+        for(int i=0; i< PositionManager.instance.DetectResult.Count ; i++){
 
             robots[i].remainTime -= Time.deltaTime;
             robots[i].createCD -= Time.deltaTime;
@@ -264,14 +264,16 @@ public class ObjectManager : MonoBehaviour
                 robots[i].toDirection = new Vector3(robots[i].toDirection.x, -Mathf.Abs(robots[i].toDirection.y), 0);
 
             float _randomAngle = Random.Range(0, 6.28f);
-            Vector3 targetPos = robots[i].pos + new Vector3(robotRadius * Mathf.Cos(_randomAngle), robotRadius * Mathf.Sin(_randomAngle), 0 );
+            //Vector3 targetPos = robots[i].pos + new Vector3(robotRadius * Mathf.Cos(_randomAngle), robotRadius * Mathf.Sin(_randomAngle), 0 );
+            Vector3 targetPos = PositionManager.instance.DetectResult[i];
 
             float _randomRotate = Random.Range(0, 360f);
             Quaternion q = Quaternion.Euler(0, 0, _randomRotate);
 
             float _randomColor = Random.Range(0.1f, 1);
 
-            float _randomFadinTime = Random.Range(0.2f, 3);
+            //float _randomFadinTime = Random.Range(0.2f, 3);
+            float _randomFadinTime = 0.2f;
 
 
             int triangleType = Random.Range(0, Artwork7.Count);

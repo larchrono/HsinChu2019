@@ -106,8 +106,11 @@ public class PaperWork : MonoBehaviour
             {
                 rigid.isKinematic = false;
             }
-
-            spr.color = Color.Lerp(spr.color , new Color(1, 1, 1, transparentArt), LerpSpeed );
+            if(rigid.isKinematic == false){
+                spr.color = Color.Lerp(spr.color , new Color(1, 1, 1, 0.25f * transparentArt), LerpSpeed );
+            } else {
+                spr.color = Color.Lerp(spr.color , new Color(1, 1, 1, transparentArt), LerpSpeed );
+            }
 
         }
         else {
